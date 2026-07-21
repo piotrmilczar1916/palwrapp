@@ -298,8 +298,8 @@ ul, ol { margin: 0; padding: 0; }
 .mobile-toc__toggle {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.45rem 0.7rem;
+  gap: 0.25rem;
+  padding: 0.5rem 0.55rem;
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.08);
@@ -396,11 +396,6 @@ ul, ol { margin: 0; padding: 0; }
 
 .mobile-toc__list a.is-active {
   font-weight: 600;
-}
-
-@media (max-width: 380px) {
-  .mobile-toc__label { display: none; }
-  .mobile-toc__toggle { padding: 0.45rem 0.55rem; }
 }
 
 /* --- Layout shell --- */
