@@ -269,10 +269,7 @@ ul, ol { margin: 0; padding: 0; }
 /* --- Mobile TOC (header, lewy górny róg) --- */
 .mobile-toc {
   display: block;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
 }
 
 @media (min-width: 1100px) {
@@ -281,8 +278,20 @@ ul, ol { margin: 0; padding: 0; }
 
 @media (max-width: 1099px) {
   .site-header__inner {
-    position: relative;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .mobile-toc {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .site-header__brand {
+    grid-column: 2;
+    justify-self: center;
   }
 }
 
