@@ -96,9 +96,49 @@
     kontaktObserver.observe(kontaktSection);
   }
 
-  /* --- Scroll spy (sidebar + header nav) --- */
+  /* --- Mobile TOC toggle --- */
+  var mobileToc = document.querySelector('[data-mobile-toc]');
+  var mobileTocToggle = document.getElementById('mobile-toc-toggle');
+  var mobileTocPanel = document.getElementById('mobile-toc-panel');
+
+  if (mobileToc && mobileTocToggle && mobileTocPanel) {
+    function closeMobileToc() {
+      mobileToc.classList.remove('is-open');
+      mobileTocToggle.setAttribute('aria-expanded', 'false');
+      mobileTocPanel.hidden = true;
+    }
+
+    function openMobileToc() {
+      mobileToc.classList.add('is-open');
+      mobileTocToggle.setAttribute('aria-expanded', 'true');
+      mobileTocPanel.hidden = false;
+    }
+
+    mobileTocToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (mobileTocPanel.hidden) {
+        openMobileToc();
+      } else {
+        closeMobileToc();
+      }
+    });
+
+    mobileTocPanel.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMobileToc);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!mobileToc.contains(e.target)) closeMobileToc();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMobileToc();
+    });
+  }
+
+  /* --- Scroll spy (sidebar + mobile TOC) --- */
   var sections = document.querySelectorAll('.article section[id], #kontakt');
-  var navLinks = document.querySelectorAll('.sidebar__list a');
+  var navLinks = document.querySelectorAll('.sidebar__list a, .mobile-toc__list a');
 
   if (sections.length && navLinks.length) {
     var observer = new IntersectionObserver(function (entries) {
