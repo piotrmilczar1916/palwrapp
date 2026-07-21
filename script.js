@@ -79,8 +79,25 @@
     }, { passive: true });
   }
 
+  /* --- Ukryj floating CTA na sekcji kontakt --- */
+  var floatingCta = document.querySelector('.floating-cta');
+  var kontaktSection = document.getElementById('kontakt');
+
+  if (floatingCta && kontaktSection) {
+    var kontaktObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        floatingCta.classList.toggle('is-hidden', entry.isIntersecting);
+      });
+    }, {
+      rootMargin: '-10% 0px -10% 0px',
+      threshold: 0.1
+    });
+
+    kontaktObserver.observe(kontaktSection);
+  }
+
   /* --- Scroll spy (sidebar + header nav) --- */
-  var sections = document.querySelectorAll('.article section[id], .article-hero[id], #kontakt');
+  var sections = document.querySelectorAll('.article section[id], #kontakt');
   var navLinks = document.querySelectorAll('.sidebar__list a');
 
   if (sections.length && navLinks.length) {
@@ -103,6 +120,19 @@
       observer.observe(section);
     });
   }
+
+  /* --- Video: opcjonalny start (np. 73s dla demo) --- */
+  document.querySelectorAll('.video-card__player[data-start]').forEach(function (video) {
+    var startAt = parseInt(video.getAttribute('data-start'), 10);
+    if (!startAt) return;
+    var started = false;
+    video.addEventListener('play', function () {
+      if (!started && video.currentTime < 1) {
+        video.currentTime = startAt;
+        started = true;
+      }
+    });
+  });
 
   /* --- Lead form (wg wykladarkaspolex.netlify.app) --- */
   var form = document.getElementById('lead-form');
