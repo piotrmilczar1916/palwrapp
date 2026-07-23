@@ -96,6 +96,23 @@
     kontaktObserver.observe(kontaktSection);
   }
 
+  /* --- Back to top --- */
+  var backToTop = document.getElementById('back-to-top');
+
+  if (backToTop) {
+    var toggleBackToTop = function () {
+      backToTop.classList.toggle('is-visible', window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
+    toggleBackToTop();
+
+    backToTop.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   /* --- Mobile TOC toggle --- */
   var mobileToc = document.querySelector('[data-mobile-toc]');
   var mobileTocToggle = document.getElementById('mobile-toc-toggle');
