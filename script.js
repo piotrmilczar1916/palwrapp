@@ -5,10 +5,8 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 
-  /* --- Benefits accordion --- */
-  var accordion = document.querySelector('[data-accordion]');
-
-  if (accordion) {
+  /* --- Accordions (korzyści, FAQ) --- */
+  document.querySelectorAll('[data-accordion]').forEach(function (accordion) {
     accordion.querySelectorAll('.benefit-item__header').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var item = btn.closest('.benefit-item');
@@ -30,7 +28,7 @@
         }
       });
     });
-  }
+  });
 
   /* --- Tab switcher --- */
   var tabsContainer = document.querySelector('[data-tabs]');
@@ -108,7 +106,7 @@
       } catch (err) { /* ignore */ }
     });
 
-    if (accordion) {
+    document.querySelectorAll('[data-accordion]').forEach(function (accordion) {
       accordion.querySelectorAll('.benefit-item').forEach(function (item, index) {
         var btn = item.querySelector('.benefit-item__header');
         var body = btn && document.getElementById(btn.getAttribute('aria-controls'));
@@ -117,7 +115,7 @@
         if (btn) btn.setAttribute('aria-expanded', String(open));
         if (body) body.hidden = !open;
       });
-    }
+    });
 
     if (tabsContainer && activateTab) {
       var firstTab = tabsContainer.querySelector('[role="tab"]');
