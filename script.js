@@ -327,12 +327,47 @@
     label.textContent = 'Wysyłanie…';
     status.className = 'form-status';
 
-    window.setTimeout(function () {
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('is-loading');
-      label.textContent = 'Wyślij zapytanie';
-      setStatus('Dziękujemy — wiadomość dotarła (formularz demo: podłącz backend w polu action).', 'success');
-      form.reset();
-    }, 900);
+    var formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { Accept: 'application/json' }
+    })
+      .then(function (response) {
+        return response.json().then(function (data) {
+          return { ok: response.ok, data: data };
+        });
+      })
+      .then(function (result) {
+        if (result.ok && result.data.success) {
+          setStatus(result.data.message, 'success');
+          form.reset();
+          return;
+        }
+
+        var message = (result.data && result.data.message)
+          ? result.data.message
+          : 'Nie udało się wysłać wiadomości. Spróbuj ponownie.';
+
+        if (result.data && Array.isArray(result.data.fields)) {
+          result.data.fields.forEach(function (id) {
+            var field = document.getElementById(id);
+            if (field) validateField(field);
+          });
+          var firstField = document.getElementById(result.data.fields[0]);
+          if (firstField) firstField.focus();
+        }
+
+        setStatus(message, 'error');
+      })
+      .catch(function () {
+        setStatus('Błąd połączenia. Sprawdź internet i spróbuj ponownie.', 'error');
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('is-loading');
+        label.textContent = 'Wyślij zapytanie';
+      });
   });
 })();
