@@ -29,6 +29,10 @@ html {
   scroll-padding-top: calc(var(--header-h) + 16px);
 }
 
+html.is-smooth-scroll {
+  scroll-behavior: auto;
+}
+
 body {
   margin: 0;
   font-family: "Inter", system-ui, -apple-system, sans-serif;

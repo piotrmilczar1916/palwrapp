@@ -4,6 +4,30 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  function closeBenefitItem(item) {
+    var btn = item.querySelector('.benefit-item__header');
+    var body = btn && document.getElementById(btn.getAttribute('aria-controls'));
+    item.classList.remove('is-open');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+    if (window.motionUi && window.motionUi.animateAccordionBody) {
+      return window.motionUi.animateAccordionBody(body, false);
+    }
+    if (body) body.hidden = true;
+    return Promise.resolve();
+  }
+
+  function openBenefitItem(item) {
+    var btn = item.querySelector('.benefit-item__header');
+    var body = btn && document.getElementById(btn.getAttribute('aria-controls'));
+    item.classList.add('is-open');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+    if (window.motionUi && window.motionUi.animateAccordionBody) {
+      return window.motionUi.animateAccordionBody(body, true);
+    }
+    if (body) body.hidden = false;
+    return Promise.resolve();
+  }
+
   /* --- Accordions --- */
   document.querySelectorAll('[data-accordion]').forEach(function (accordion) {
     var multi = accordion.hasAttribute('data-accordion-multi');
@@ -11,32 +35,28 @@
     accordion.querySelectorAll('.benefit-item__header').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var item = btn.closest('.benefit-item');
-        var body = document.getElementById(btn.getAttribute('aria-controls'));
         var isOpen = item.classList.contains('is-open');
 
+        if (isOpen && multi) {
+          closeBenefitItem(item);
+          return;
+        }
+
+        if (isOpen && !multi) {
+          closeBenefitItem(item);
+          return;
+        }
+
+        var closeOthers = [];
         if (!multi) {
-          accordion.querySelectorAll('.benefit-item').forEach(function (other) {
-            var otherBtn = other.querySelector('.benefit-item__header');
-            var otherBody = document.getElementById(otherBtn.getAttribute('aria-controls'));
-            other.classList.remove('is-open');
-            otherBtn.setAttribute('aria-expanded', 'false');
-            if (otherBody) otherBody.hidden = true;
+          accordion.querySelectorAll('.benefit-item.is-open').forEach(function (other) {
+            if (other !== item) closeOthers.push(closeBenefitItem(other));
           });
         }
 
-        if (isOpen && multi) {
-          item.classList.remove('is-open');
-          btn.setAttribute('aria-expanded', 'false');
-          if (body) body.hidden = true;
-        } else if (!isOpen) {
-          item.classList.add('is-open');
-          btn.setAttribute('aria-expanded', 'true');
-          if (body) body.hidden = false;
-        } else if (!multi) {
-          item.classList.remove('is-open');
-          btn.setAttribute('aria-expanded', 'false');
-          if (body) body.hidden = true;
-        }
+        Promise.all(closeOthers).then(function () {
+          openBenefitItem(item);
+        });
       });
     });
   });
@@ -47,9 +67,14 @@
     if (!toggle) return;
 
     toggle.addEventListener('click', function () {
-      var open = card.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.textContent = open ? 'Zwiń parametry ↑' : 'Zobacz model →';
+      var willOpen = !card.classList.contains('is-open');
+      if (window.motionUi && window.motionUi.animateModelExpand) {
+        window.motionUi.animateModelExpand(card, willOpen, toggle);
+        return;
+      }
+      card.classList.toggle('is-open', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
+      toggle.textContent = willOpen ? 'Zwiń parametry ↑' : 'Zobacz model →';
     });
   });
 
@@ -63,6 +88,7 @@
     if (!videoModal || !videoModalPlayer) return;
     videoModal.hidden = false;
     document.body.style.overflow = 'hidden';
+    if (window.motionUi && window.motionUi.lockScroll) window.motionUi.lockScroll();
     videoModalPlayer.currentTime = 0;
     videoModalPlayer.play().catch(function () { /* ignore */ });
   }
@@ -71,6 +97,7 @@
     if (!videoModal || !videoModalPlayer) return;
     videoModal.hidden = true;
     document.body.style.overflow = '';
+    if (window.motionUi && window.motionUi.unlockScroll) window.motionUi.unlockScroll();
     videoModalPlayer.pause();
   }
 
@@ -95,12 +122,20 @@
     navToggle.addEventListener('click', function () {
       var open = header.classList.toggle('is-nav-open');
       navToggle.setAttribute('aria-expanded', String(open));
+      if (window.motionUi) {
+        if (open && window.motionUi.lockScroll) window.motionUi.lockScroll();
+        else if (!open && window.motionUi.unlockScroll) window.motionUi.unlockScroll();
+      }
     });
 
     siteNav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
+        var wasOpen = header.classList.contains('is-nav-open');
         header.classList.remove('is-nav-open');
         navToggle.setAttribute('aria-expanded', 'false');
+        if (wasOpen && window.motionUi && window.motionUi.unlockScroll) {
+          window.motionUi.unlockScroll();
+        }
       });
     });
   }
@@ -119,6 +154,7 @@
     }
     if (videoModal) videoModal.hidden = true;
     document.body.style.overflow = '';
+    if (window.motionUi && window.motionUi.resetScrollLocks) window.motionUi.resetScrollLocks();
 
     document.querySelectorAll('[data-accordion]').forEach(function (accordion) {
       var multi = accordion.hasAttribute('data-accordion-multi');
@@ -185,14 +221,23 @@
   /* --- Back to top --- */
   var backToTop = document.getElementById('back-to-top');
   if (backToTop) {
-    var toggleBackToTop = function () {
-      backToTop.classList.toggle('is-visible', window.scrollY > 400);
+    var toggleBackToTop = function (y) {
+      var scrollY = typeof y === 'number' ? y : window.scrollY;
+      backToTop.classList.toggle('is-visible', scrollY > 400);
     };
-    window.addEventListener('scroll', toggleBackToTop, { passive: true });
-    toggleBackToTop();
+    if (window.motionUi && window.motionUi.onScroll) {
+      window.motionUi.onScroll(toggleBackToTop);
+    } else {
+      window.addEventListener('scroll', function () { toggleBackToTop(window.scrollY); }, { passive: true });
+      toggleBackToTop(window.scrollY);
+    }
     backToTop.addEventListener('click', function (e) {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.motionUi && window.motionUi.scrollToSection) {
+        window.motionUi.scrollToSection('#top');
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
   }
 
@@ -316,96 +361,5 @@
           if (label) label.textContent = 'Wyślij zapytanie →';
         });
     });
-  }
-})();
-
-(function () {
-  'use strict';
-
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var header = document.getElementById('site-header');
-
-  if (header) {
-    var syncHeader = function () {
-      header.classList.toggle('is-stuck', window.scrollY > 12);
-    };
-    window.addEventListener('scroll', syncHeader, { passive: true });
-    syncHeader();
-  }
-
-  var revealSelectors = [
-    '.section-header',
-    '.compare',
-    '.prose',
-    '.industry-card',
-    '.specs-layout',
-    '.benefit-card',
-    '.model-showcase__card',
-    '.equip-card',
-    '.module-card',
-    '.video-feature',
-    '.faq-item',
-    '.contact-layout__copy',
-    '.contact-layout__form'
-  ];
-
-  var revealTargets = [];
-  revealSelectors.forEach(function (selector) {
-    document.querySelectorAll(selector).forEach(function (el) {
-      if (revealTargets.indexOf(el) === -1) revealTargets.push(el);
-    });
-  });
-
-  if (revealTargets.length && !reduceMotion && 'IntersectionObserver' in window) {
-    revealTargets.forEach(function (el) {
-      el.setAttribute('data-reveal', '');
-      var siblings = Array.prototype.filter.call(
-        el.parentElement ? el.parentElement.children : [],
-        function (node) { return node.hasAttribute && node.hasAttribute('data-reveal'); }
-      );
-      var index = siblings.indexOf(el);
-      if (index > 0) el.style.setProperty('--reveal-delay', Math.min(index, 6) * 60 + 'ms');
-    });
-
-    var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-revealed');
-        revealObserver.unobserve(entry.target);
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-
-    revealTargets.forEach(function (el) { revealObserver.observe(el); });
-  }
-
-  var floatingCtaBtn = document.querySelector('.floating-cta');
-  var heroSection = document.querySelector('.hero');
-
-  if (floatingCtaBtn && heroSection && 'IntersectionObserver' in window) {
-    var heroCtaObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        floatingCtaBtn.classList.toggle('is-hero-hidden', entry.isIntersecting);
-      });
-    }, { rootMargin: '-25% 0px -25% 0px', threshold: 0 });
-    heroCtaObserver.observe(heroSection);
-  }
-
-  var stage = document.querySelector('[data-hero-parallax]');
-  var hero = document.querySelector('.hero');
-
-  if (stage && hero && !reduceMotion && window.matchMedia('(min-width: 980px)').matches) {
-    var ticking = false;
-    var updateParallax = function () {
-      var heroHeight = hero.offsetHeight || 1;
-      var progress = Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
-      stage.style.transform = 'translate3d(0, ' + (progress * -28).toFixed(2) + 'px, 0)';
-      ticking = false;
-    };
-    window.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(updateParallax);
-    }, { passive: true });
-    updateParallax();
   }
 })();
