@@ -205,19 +205,6 @@
     if (e.persisted) resetPageToDefaults();
   });
 
-  /* --- Ukryj floating CTA na kontakt --- */
-  var floatingCta = document.querySelector('.floating-cta');
-  var kontaktSection = document.getElementById('kontakt');
-
-  if (floatingCta && kontaktSection) {
-    var kontaktObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        floatingCta.classList.toggle('is-hidden', entry.isIntersecting);
-      });
-    }, { rootMargin: '-10% 0px -10% 0px', threshold: 0.1 });
-    kontaktObserver.observe(kontaktSection);
-  }
-
   /* --- Back to top --- */
   var backToTop = document.getElementById('back-to-top');
   if (backToTop) {
