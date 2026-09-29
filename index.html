@@ -15,29 +15,59 @@
   <a class="skip-link" href="#main">Przejdź do treści</a>
 
   <header class="site-header" id="site-header">
-    <div class="container site-header__inner">
-      <a class="site-header__brand" href="#top" aria-label="Palwrapp — strona główna">
-        <span class="site-header__logo">palwrapp<span class="site-header__tld">.pl</span></span>
-      </a>
+    <div class="site-header__shell">
+      <div class="site-header__inner">
+        <a class="site-header__brand" href="#top" aria-label="Palwrapp — strona główna">
+          <span class="site-header__logo">palwrapp<span class="site-header__tld">.pl</span></span>
+        </a>
 
-      <nav class="site-nav" id="site-nav" aria-label="Główna nawigacja">
-        <ul class="site-nav__list">
-          <li><a class="site-nav__link" href="#o-produkcie">O produkcie</a></li>
-          <li><a class="site-nav__link" href="#zastosowania">Zastosowania</a></li>
-          <li><a class="site-nav__link" href="#korzysci">Korzyści</a></li>
-          <li><a class="site-nav__link" href="#modele">Modele</a></li>
-          <li><a class="site-nav__link" href="#wyposazenie">Wyposażenie</a></li>
-          <li><a class="site-nav__link" href="#faq">FAQ</a></li>
-          <li><a class="site-nav__link" href="#kontakt">Kontakt</a></li>
-        </ul>
-      </nav>
+        <nav class="site-nav" id="site-nav" aria-label="Główna nawigacja">
+          <ul class="site-nav__list">
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="#o-produkcie" data-nav-section="o-produkcie">O produkcie</a>
+            </li>
+            <li class="site-nav__item site-nav__item--tablet-hide">
+              <a class="site-nav__link" href="#zastosowania" data-nav-section="zastosowania">Zastosowania</a>
+            </li>
+            <li class="site-nav__item site-nav__item--dropdown" data-nav-dropdown>
+              <a class="site-nav__link site-nav__link--modele" href="#modele" data-nav-section="modele">
+                <span>Modele</span>
+                <svg class="site-nav__chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <button type="button" class="site-nav__dropdown-toggle" aria-expanded="false" aria-controls="nav-models-panel" aria-label="Rozwiń listę modeli Palwrapp">
+                <span class="visually-hidden">Rozwiń listę modeli</span>
+                <svg class="site-nav__chevron" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="site-nav__mega" id="nav-models-panel">
+                <p class="site-nav__mega-label">Konfiguracje Palwrapp</p>
+                <ul class="site-nav__mega-list">
+                  <li><a class="site-nav__mega-link" href="#model-palwrapp-3-inline"><span class="site-nav__mega-name">Palwrapp 3 Inline</span><span class="site-nav__mega-spec">Do 50 cykli/min</span></a></li>
+                  <li><a class="site-nav__mega-link" href="#model-palwrapp-2-inline"><span class="site-nav__mega-name">Palwrapp 2 Inline</span><span class="site-nav__mega-spec">Do 40 cykli/min</span></a></li>
+                  <li><a class="site-nav__mega-link" href="#model-palwrapp-2-sweep"><span class="site-nav__mega-name">Palwrapp 2 Sweep</span><span class="site-nav__mega-spec">Do 35 cykli/min</span></a></li>
+                  <li><a class="site-nav__mega-link" href="#model-palwrapp-sweep-infeed"><span class="site-nav__mega-name">Palwrapp Sweep Infeed</span><span class="site-nav__mega-spec">Do 25 cykli/min</span></a></li>
+                </ul>
+                <a class="site-nav__mega-all" href="#modele">Porównaj wszystkie modele →</a>
+              </div>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="#korzysci" data-nav-section="korzysci">Korzyści</a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="#faq" data-nav-section="faq">FAQ</a>
+            </li>
+          </ul>
+        </nav>
 
-      <button type="button" class="site-header__menu" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
-        <span class="visually-hidden">Menu</span>
-        <span class="site-header__menu-bar" aria-hidden="true"></span>
-        <span class="site-header__menu-bar" aria-hidden="true"></span>
-        <span class="site-header__menu-bar" aria-hidden="true"></span>
-      </button>
+        <div class="site-header__actions">
+          <a class="site-header__cta" href="#kontakt">Zapytaj o konfigurację →</a>
+          <button type="button" class="site-header__menu" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+            <span class="visually-hidden">Menu</span>
+            <span class="site-header__menu-bar" aria-hidden="true"></span>
+            <span class="site-header__menu-bar" aria-hidden="true"></span>
+            <span class="site-header__menu-bar" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -411,7 +441,7 @@
         </div>
 
         <div class="model-showcase">
-          <article class="model-showcase__card" data-model-card>
+          <article class="model-showcase__card" id="model-palwrapp-3-inline" data-model-card>
             <span class="model-showcase__ribbon">Najwyższa wydajność</span>
             <div class="model-showcase__media">
               <img src="hero-palwrapp.png" alt="Palwrapp 3 Inline" loading="lazy" decoding="async">
@@ -432,7 +462,7 @@
             </div>
           </article>
 
-          <article class="model-showcase__card" data-model-card>
+          <article class="model-showcase__card" id="model-palwrapp-2-inline" data-model-card>
             <div class="model-showcase__media">
               <img src="hero-palwrapp.png" alt="Palwrapp 2 Inline" loading="lazy" decoding="async">
             </div>
@@ -452,7 +482,7 @@
             </div>
           </article>
 
-          <article class="model-showcase__card" data-model-card>
+          <article class="model-showcase__card" id="model-palwrapp-2-sweep" data-model-card>
             <div class="model-showcase__media">
               <img src="hero-palwrapp.png" alt="Palwrapp 2 Sweep" loading="lazy" decoding="async">
             </div>
@@ -472,7 +502,7 @@
             </div>
           </article>
 
-          <article class="model-showcase__card" data-model-card>
+          <article class="model-showcase__card" id="model-palwrapp-sweep-infeed" data-model-card>
             <span class="model-showcase__ribbon model-showcase__ribbon--muted">Półautomatyczny</span>
             <div class="model-showcase__media">
               <img src="hero-palwrapp.png" alt="Palwrapp Sweep Infeed" loading="lazy" decoding="async">

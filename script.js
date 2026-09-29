@@ -118,10 +118,29 @@
   var navToggle = document.getElementById('nav-toggle');
   var siteNav = document.getElementById('site-nav');
 
+  function closeMobileNav() {
+    if (!header || !navToggle) return;
+    var wasOpen = header.classList.contains('is-nav-open');
+    header.classList.remove('is-nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    if (wasOpen && window.motionUi && window.motionUi.unlockScroll) {
+      window.motionUi.unlockScroll();
+    }
+  }
+
+  function setModelsDropdownOpen(open) {
+    var dropdown = document.querySelector('[data-nav-dropdown]');
+    if (!dropdown) return;
+    dropdown.classList.toggle('is-open', open);
+    var toggle = dropdown.querySelector('.site-nav__dropdown-toggle');
+    if (toggle) toggle.setAttribute('aria-expanded', String(open));
+  }
+
   if (header && navToggle && siteNav) {
     navToggle.addEventListener('click', function () {
       var open = header.classList.toggle('is-nav-open');
       navToggle.setAttribute('aria-expanded', String(open));
+      if (!open) setModelsDropdownOpen(false);
       if (window.motionUi) {
         if (open && window.motionUi.lockScroll) window.motionUi.lockScroll();
         else if (!open && window.motionUi.unlockScroll) window.motionUi.unlockScroll();
@@ -130,13 +149,33 @@
 
     siteNav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
-        var wasOpen = header.classList.contains('is-nav-open');
-        header.classList.remove('is-nav-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        if (wasOpen && window.motionUi && window.motionUi.unlockScroll) {
-          window.motionUi.unlockScroll();
-        }
+        closeMobileNav();
+        setModelsDropdownOpen(false);
       });
+    });
+
+    var modelsDropdownToggle = siteNav.querySelector('.site-nav__dropdown-toggle');
+    if (modelsDropdownToggle) {
+      modelsDropdownToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var dropdown = document.querySelector('[data-nav-dropdown]');
+        if (!dropdown) return;
+        setModelsDropdownOpen(!dropdown.classList.contains('is-open'));
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      var dropdown = document.querySelector('[data-nav-dropdown]');
+      if (!dropdown || dropdown.contains(e.target)) return;
+      setModelsDropdownOpen(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setModelsDropdownOpen(false);
+        closeMobileNav();
+      }
     });
   }
 
@@ -198,6 +237,7 @@
       header.classList.remove('is-nav-open');
       navToggle.setAttribute('aria-expanded', 'false');
     }
+    setModelsDropdownOpen(false);
   }
 
   resetPageToDefaults();
@@ -230,21 +270,37 @@
 
   /* --- Scroll spy (header nav) --- */
   var sections = document.querySelectorAll('main section[id], #kontakt');
-  var navLinks = document.querySelectorAll('.site-nav__link');
+  var navLinks = document.querySelectorAll('.site-nav__link[data-nav-section]');
+  var navSectionIds = {
+    'o-produkcie': true,
+    'zastosowania': true,
+    'korzysci': true,
+    'modele': true,
+    'faq': true
+  };
 
   if (sections.length && navLinks.length) {
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           var id = entry.target.getAttribute('id');
+          if (id && id.indexOf('model-palwrapp-') === 0) {
+            id = 'modele';
+          }
+          if (!navSectionIds[id]) return;
           navLinks.forEach(function (link) {
-            link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+            link.classList.toggle('is-active', link.getAttribute('data-nav-section') === id);
           });
         }
       });
     }, { rootMargin: '-25% 0px -55% 0px', threshold: 0 });
 
-    sections.forEach(function (section) { observer.observe(section); });
+    sections.forEach(function (section) {
+      observer.observe(section);
+    });
+    document.querySelectorAll('.model-showcase__card[id]').forEach(function (card) {
+      observer.observe(card);
+    });
   }
 
   /* --- Lead form --- */
