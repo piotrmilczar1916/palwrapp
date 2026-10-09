@@ -1,3 +1,7 @@
-# Netlify — stary adres przekierowany na domenę docelową (przenosi autorytet SEO).
-# Zostaw ten plik w deployu Netlify; na hostingu PHP jest nieaktywny.
-https://palwrapppl.netlify.app/*  https://palwrapp.pl/:splat  301!
+# Netlify — przekierowanie na palwrapp.pl
+#
+# WŁĄCZ dopiero gdy domena palwrapp.pl jest podpięta w Netlify
+# (Domain settings → DNS / nameservery) i strona otwiera się pod tym adresem.
+# Do tego czasu zostaw zakomentowane — inaczej *.netlify.app robi 301 na nieistniejącą domenę.
+#
+# https://palwrapppl.netlify.app/*  https://palwrapp.pl/:splat  301!
