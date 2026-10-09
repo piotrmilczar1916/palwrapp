@@ -3,10 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Palwrapp — kompaktowy, modułowy paletyzator Robopac. Parametry, modele i warianty dla przemysłu spożywczego, napojowego i FMCG.">
-  <title>Palwrapp — kompaktowy i modułowy paletyzator Robopac</title>
+
+  <title>Paletyzator kompaktowy Palwrapp — Robopac | Spolex</title>
+  <meta name="description" content="Palwrapp — kompaktowy, modułowy paletyzator Robopac: do 50 cykli/min, paleta do 2200 mm, owijanie stretch. Zapytaj o dobór konfiguracji do swojej linii.">
+
+  <!--
+    ================= DOMENA KANONICZNA =================
+    Wszystkie adresy bezwzględne na stronie używają ciągu:
+        https://palwrapp.pl
+    Zmiana domeny (np. na https://palwrapp.pl) = podmiana tego jednego
+    ciągu w plikach: index.html, sitemap.xml, robots.txt.
+    ====================================================
+  -->
+  <link rel="canonical" href="https://palwrapp.pl/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="Spolex Sp. z o.o.">
+  <meta name="theme-color" content="#071525">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="Palwrapp — Spolex Sp. z o.o.">
+  <meta property="og:url" content="https://palwrapp.pl/">
+  <meta property="og:title" content="Paletyzator kompaktowy Palwrapp — Robopac | Spolex">
+  <meta property="og:description" content="Kompaktowy, modułowy paletyzator Robopac Palwrapp: do 50 cykli/min, paleta do 2200 mm, integracja z istniejącą linią. Dobierz konfigurację.">
+  <meta property="og:image" content="https://palwrapp.pl/og-palwrapp.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Robopac Palwrapp — kompaktowy modułowy paletyzator">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Paletyzator kompaktowy Palwrapp — Robopac | Spolex">
+  <meta name="twitter:description" content="Kompaktowy, modułowy paletyzator Robopac Palwrapp: do 50 cykli/min, paleta do 2200 mm, integracja z istniejącą linią.">
+  <meta name="twitter:image" content="https://palwrapp.pl/og-palwrapp.jpg">
+
+  <!-- Favicony -->
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- LCP: wstępne pobranie obrazu hero w formacie AVIF -->
+  <link rel="preload" as="image" type="image/avif" href="hero-palwrapp-1510.avif" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -79,8 +119,8 @@
 
     <div class="container hero__grid">
       <div class="hero__copy">
-        <p class="hero__label">ROBOPAC PALWRAPP</p>
         <h1 class="hero__title">
+          <span class="hero__label">ROBOPAC PALWRAPP <span class="hero__label-sep" aria-hidden="true">·</span> KOMPAKTOWY PALETYZATOR</span>
           Paletyzacja<br>
           bez zajmowania<br>
           <span class="hero__title-accent">całej hali.</span>
@@ -101,13 +141,17 @@
 
       <figure class="hero__media">
         <div class="hero__stage" data-hero-parallax>
-          <img
-            src="hero-palwrapp.png"
-            alt="Robopac Palwrapp — kompaktowy modułowy paletyzator w konfiguracji produkcyjnej"
-            width="1510"
-            height="1133"
-            fetchpriority="high"
-            decoding="async">
+          <picture>
+            <source type="image/avif" srcset="hero-palwrapp-1510.avif">
+            <source type="image/webp" srcset="hero-palwrapp-1510.webp">
+            <img
+              src="hero-palwrapp.png"
+              alt="Robopac Palwrapp — kompaktowy modułowy paletyzator w konfiguracji produkcyjnej"
+              width="1510"
+              height="1133"
+              fetchpriority="high"
+              decoding="async">
+          </picture>
         </div>
       </figure>
     </div>
@@ -180,7 +224,11 @@
 
           <article class="compare__card compare__card--palwrapp">
             <div class="compare__media">
-              <img src="hero-palwrapp.png" alt="Kompaktowy paletyzator Palwrapp w linii produkcyjnej" loading="lazy" decoding="async">
+              <picture>
+                <source type="image/avif" srcset="hero-palwrapp-1510.avif">
+                <source type="image/webp" srcset="hero-palwrapp-1510.webp">
+                <img src="hero-palwrapp.png" alt="Kompaktowy paletyzator Palwrapp w linii produkcyjnej" width="1510" height="1133" loading="lazy" decoding="async">
+              </picture>
               <span class="compare__media-tag">Palwrapp</span>
             </div>
             <ul class="compare__list compare__list--positive">
@@ -223,7 +271,11 @@
         <div class="industry-grid">
           <article class="industry-card">
             <div class="industry-card__bg industry-card__bg--food" aria-hidden="true">
-              <img src="assets/industry-spozywczy.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <picture>
+                <source type="image/avif" srcset="assets/industry-spozywczy.avif">
+                <source type="image/webp" srcset="assets/industry-spozywczy.webp">
+                <img src="assets/industry-spozywczy.jpg" alt="" width="1024" height="575" loading="lazy" decoding="async">
+              </picture>
             </div>
             <div class="industry-card__content">
               <span class="industry-card__icon" aria-hidden="true">
@@ -235,7 +287,11 @@
           </article>
           <article class="industry-card">
             <div class="industry-card__bg industry-card__bg--drinks" aria-hidden="true">
-              <img src="assets/industry-napoje.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <picture>
+                <source type="image/avif" srcset="assets/industry-napoje.avif">
+                <source type="image/webp" srcset="assets/industry-napoje.webp">
+                <img src="assets/industry-napoje.jpg" alt="" width="1024" height="576" loading="lazy" decoding="async">
+              </picture>
             </div>
             <div class="industry-card__content">
               <span class="industry-card__icon" aria-hidden="true">
@@ -247,7 +303,11 @@
           </article>
           <article class="industry-card">
             <div class="industry-card__bg industry-card__bg--fmcg" aria-hidden="true">
-              <img src="assets/industry-fmcg.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <picture>
+                <source type="image/avif" srcset="assets/industry-fmcg.avif">
+                <source type="image/webp" srcset="assets/industry-fmcg.webp">
+                <img src="assets/industry-fmcg.jpg" alt="" width="1024" height="576" loading="lazy" decoding="async">
+              </picture>
             </div>
             <div class="industry-card__content">
               <span class="industry-card__icon" aria-hidden="true">
@@ -259,7 +319,11 @@
           </article>
           <article class="industry-card">
             <div class="industry-card__bg industry-card__bg--logistics" aria-hidden="true">
-              <img src="assets/industry-logistyka.jpg" alt="" width="1920" height="1080" loading="lazy" decoding="async">
+              <picture>
+                <source type="image/avif" srcset="assets/industry-logistyka.avif">
+                <source type="image/webp" srcset="assets/industry-logistyka.webp">
+                <img src="assets/industry-logistyka.jpg" alt="" width="1024" height="576" loading="lazy" decoding="async">
+              </picture>
             </div>
             <div class="industry-card__content">
               <span class="industry-card__icon" aria-hidden="true">
@@ -291,7 +355,11 @@
 
         <div class="specs-layout">
           <figure class="specs-layout__media">
-            <img src="hero-palwrapp.png" alt="Palwrapp — widok maszyny do sekcji parametrów" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/avif" srcset="hero-palwrapp-1510.avif">
+              <source type="image/webp" srcset="hero-palwrapp-1510.webp">
+              <img src="hero-palwrapp.png" alt="Paletyzator Palwrapp — wydajność do 50 cykli na minutę i paleta do 2200 mm" width="1510" height="1133" loading="lazy" decoding="async">
+            </picture>
           </figure>
 
           <div class="specs-panel">
@@ -444,7 +512,11 @@
           <article class="model-showcase__card" id="model-palwrapp-3-inline" data-model-card>
             <span class="model-showcase__ribbon">Najwyższa wydajność</span>
             <div class="model-showcase__media">
-              <img src="hero-palwrapp.png" alt="Palwrapp 3 Inline" loading="lazy" decoding="async">
+              <picture>
+                <source type="image/avif" srcset="hero-palwrapp-1510.avif">
+                <source type="image/webp" srcset="hero-palwrapp-1510.webp">
+                <img src="hero-palwrapp.png" alt="Paletyzator Palwrapp — zdjęcie poglądowe gamy" width="1510" height="1133" loading="lazy" decoding="async">
+              </picture>
             </div>
             <div class="model-showcase__body">
               <h3>Palwrapp 3 Inline</h3>
@@ -464,7 +536,11 @@
 
           <article class="model-showcase__card" id="model-palwrapp-2-inline" data-model-card>
             <div class="model-showcase__media">
-              <img src="hero-palwrapp.png" alt="Palwrapp 2 Inline" loading="lazy" decoding="async">
+              <picture>
+                <source type="image/avif" srcset="hero-palwrapp-1510.avif">
+                <source type="image/webp" srcset="hero-palwrapp-1510.webp">
+                <img src="hero-palwrapp.png" alt="Paletyzator Palwrapp — zdjęcie poglądowe gamy" width="1510" height="1133" loading="lazy" decoding="async">
+              </picture>
             </div>
             <div class="model-showcase__body">
               <h3>Palwrapp 2 Inline</h3>
@@ -484,7 +560,11 @@
 
           <article class="model-showcase__card" id="model-palwrapp-2-sweep" data-model-card>
             <div class="model-showcase__media">
-              <img src="hero-palwrapp.png" alt="Palwrapp 2 Sweep" loading="lazy" decoding="async">
+              <picture>
+                <source type="image/avif" srcset="hero-palwrapp-1510.avif">
+                <source type="image/webp" srcset="hero-palwrapp-1510.webp">
+                <img src="hero-palwrapp.png" alt="Paletyzator Palwrapp — zdjęcie poglądowe gamy" width="1510" height="1133" loading="lazy" decoding="async">
+              </picture>
             </div>
             <div class="model-showcase__body">
               <h3>Palwrapp 2 Sweep</h3>
@@ -505,7 +585,11 @@
           <article class="model-showcase__card" id="model-palwrapp-sweep-infeed" data-model-card>
             <span class="model-showcase__ribbon model-showcase__ribbon--muted">Półautomatyczny</span>
             <div class="model-showcase__media">
-              <img src="hero-palwrapp.png" alt="Palwrapp Sweep Infeed" loading="lazy" decoding="async">
+              <picture>
+                <source type="image/avif" srcset="hero-palwrapp-1510.avif">
+                <source type="image/webp" srcset="hero-palwrapp-1510.webp">
+                <img src="hero-palwrapp.png" alt="Paletyzator Palwrapp — zdjęcie poglądowe gamy" width="1510" height="1133" loading="lazy" decoding="async">
+              </picture>
             </div>
             <div class="model-showcase__body">
               <h3>Palwrapp Sweep Infeed</h3>
@@ -522,24 +606,6 @@
               </dl>
             </div>
           </article>
-        </div>
-
-        <div class="model-table-wrap visually-hidden" aria-hidden="true">
-          <table class="model-table">
-            <caption class="visually-hidden">Porównanie modeli Palwrapp</caption>
-            <thead>
-              <tr>
-                <th scope="col">Parametr</th>
-                <th scope="col">Palwrapp 3 Inline</th>
-                <th scope="col">Palwrapp 2 Inline</th>
-                <th scope="col">Palwrapp 2 Sweep</th>
-                <th scope="col">Palwrapp Sweep Infeed</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Wydajność</th><td>do 50 cykli/min</td><td>do 40 cykli/min</td><td>do 35 cykli/min</td><td>do 25 cykli/min</td></tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
@@ -630,7 +696,11 @@
             <span class="video-play__ring" aria-hidden="true"></span>
             <span class="video-play__icon" aria-hidden="true">▶</span>
           </button>
-          <img src="hero-palwrapp.png" alt="" loading="lazy" decoding="async" aria-hidden="true">
+          <picture>
+            <source type="image/avif" srcset="hero-palwrapp-1510.avif">
+            <source type="image/webp" srcset="hero-palwrapp-1510.webp">
+            <img src="hero-palwrapp.png" alt="" width="1510" height="1133" loading="lazy" decoding="async" aria-hidden="true">
+          </picture>
         </div>
       </div>
 
@@ -763,6 +833,12 @@
               <p id="hint-produkt" class="lead-form__hint">Im więcej szczegółów (produkt, format opakowania, wydajność), tym trafniejszy dobór.</p>
               <p id="err-produkt" class="field-error" role="alert">Opisz krótko produkt do pakowania.</p>
             </div>
+            <!-- Pole-pułapka na boty. Niewidoczne dla użytkownika i czytników ekranu;
+                 jeśli zostanie wypełnione, mail.php nie wysyła wiadomości. -->
+            <div class="lead-form__trap" aria-hidden="true">
+              <label for="kontakt-dodatkowy">Nie wypełniaj tego pola</label>
+              <input type="text" id="kontakt-dodatkowy" name="kontakt_dodatkowy" tabindex="-1" autocomplete="off">
+            </div>
             <p class="lead-form__legal">Wysyłając formularz, wyrażasz zgodę na kontakt w sprawie oferty. <a href="https://spolex.com/pl/polityka-prywatnosci/" target="_blank" rel="noopener noreferrer">Polityka prywatności</a>.</p>
             <button type="submit" id="submit-btn" class="lead-form__submit btn btn--primary">
               <svg class="btn-spinner" width="16" height="16" fill="none" viewBox="0 0 24 24" aria-hidden="true"><circle opacity="0.25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path opacity="0.75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
@@ -788,7 +864,7 @@
         <a href="https://spolex.com/pl/polityka-prywatnosci/" target="_blank" rel="noopener noreferrer">Polityka prywatności</a>
       </nav>
       <div class="site-footer__meta">
-        <p>Spolex Sp. z o.o. · ul. Rzemieślnicza 13 · 05-082 Blizne Łaszczyńskiego</p>
+        <p><a href="https://spolex.com/" rel="noopener">Spolex Sp. z o.o.</a> · ul. Rzemieślnicza 13 · 05-082 Blizne Łaszczyńskiego</p>
         <p>Tel.: <a href="tel:+48223517191">22 351 71 91</a> · <a href="mailto:biuro@spolex.com">biuro@spolex.com</a></p>
         <p>&copy; <span id="year"></span> Wszelkie prawa zastrzeżone. Maszyny Robopac — Aetna Group.</p>
       </div>
@@ -797,10 +873,481 @@
 
   <a href="#top" class="back-to-top" id="back-to-top" aria-label="Wróć na górę strony">↑</a>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-  <script src="js/motion.js"></script>
-  <script src="script.js"></script>
+  <!-- Dane strukturalne JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://palwrapp.pl/#organization",
+        "name": "Spolex Sp. z o.o.",
+        "legalName": "Spolex Sp. z o.o.",
+        "url": "https://spolex.com/",
+        "description": "Autoryzowany dystrybutor maszyn pakujących Robopac (Aetna Group) w Polsce — dostawa, instalacja, uruchomienie i serwis.",
+        "telephone": "+48223517191",
+        "email": "biuro@spolex.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Rzemieślnicza 13",
+          "postalCode": "05-082",
+          "addressLocality": "Blizne Łaszczyńskiego",
+          "addressCountry": "PL"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Polska"
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "telephone": "+48223517191",
+            "email": "biuro@spolex.com",
+            "availableLanguage": [
+              "pl",
+              "en"
+            ],
+            "areaServed": "PL"
+          }
+        ]
+      },
+      {
+        "@type": "Brand",
+        "@id": "https://palwrapp.pl/#robopac",
+        "name": "Robopac",
+        "url": "https://www.robopac.com/",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Aetna Group S.p.A.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "IT"
+          }
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://palwrapp.pl/#website",
+        "url": "https://palwrapp.pl/",
+        "name": "Palwrapp — kompaktowy paletyzator Robopac",
+        "inLanguage": "pl-PL",
+        "publisher": {
+          "@id": "https://palwrapp.pl/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://palwrapp.pl/#webpage",
+        "url": "https://palwrapp.pl/",
+        "name": "Paletyzator kompaktowy Palwrapp — Robopac | Spolex",
+        "description": "Palwrapp — kompaktowy, modułowy paletyzator Robopac: do 50 cykli/min, paleta do 2200 mm, owijanie stretch. Zapytaj o dobór konfiguracji do swojej linii.",
+        "isPartOf": {
+          "@id": "https://palwrapp.pl/#website"
+        },
+        "about": {
+          "@id": "https://palwrapp.pl/#product"
+        },
+        "primaryImageOfPage": {
+          "@id": "https://palwrapp.pl/#heroimage"
+        },
+        "inLanguage": "pl-PL"
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://palwrapp.pl/#heroimage",
+        "url": "https://palwrapp.pl/hero-palwrapp.png",
+        "contentUrl": "https://palwrapp.pl/hero-palwrapp.png",
+        "width": 1510,
+        "height": 1133,
+        "caption": "Robopac Palwrapp — kompaktowy modułowy paletyzator w konfiguracji produkcyjnej"
+      },
+      {
+        "@type": "Product",
+        "@id": "https://palwrapp.pl/#product",
+        "name": "Robopac Palwrapp",
+        "alternateName": "Palwrapp — kompaktowy paletyzator modułowy",
+        "category": "Paletyzatory kompaktowe / automatyzacja końca linii",
+        "url": "https://palwrapp.pl/",
+        "image": "https://palwrapp.pl/hero-palwrapp.png",
+        "description": "Palwrapp to kompaktowy, modułowy paletyzator Robopac przeznaczony do produktów o płaskim spodzie (kartony, tace, pojemniki). Zajmuje wyraźnie mniej miejsca niż paletyzatory portalowe i integruje się z istniejącą linią produkcyjną. Wydajność do 50 cykli/min i do 3 warstw/min, paleta do 2200 mm, formaty 800 × 1200 mm i 1000 × 1200 mm, opcjonalnie owijanie folią stretch, przekładki międzywarstwowe i destacker palet.",
+        "brand": {
+          "@id": "https://palwrapp.pl/#robopac"
+        },
+        "manufacturer": {
+          "@id": "https://palwrapp.pl/#robopac"
+        },
+        "audience": {
+          "@type": "BusinessAudience",
+          "name": "Przemysł spożywczy, napojowy, FMCG, logistyka kontraktowa"
+        },
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "Maks. wydajność",
+            "value": "do 50 cykli/min"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Maks. wydajność warstw",
+            "value": "do 3 warstw/min"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Maks. wysokość palety",
+            "value": "2200 mm"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Formaty palety",
+            "value": "800 × 1200 mm, 1000 × 1200 mm"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Maks. format produktu",
+            "value": "600 × 400 mm"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Min. format produktu",
+            "value": "150 × 100 mm (Palwrapp 3 Inline)"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Maks. waga warstwy (opcja)",
+            "value": "350 kg"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Bezpieczeństwo",
+            "value": "kat. 3 PL(d) wg EN ISO 13849-1"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Sterowanie",
+            "value": "PLC z panelem dotykowym, napędy serwo"
+          }
+        ],
+        "hasVariant": [
+          {
+            "@type": "ProductModel",
+            "@id": "https://palwrapp.pl/#model-palwrapp-3-inline",
+            "name": "Palwrapp 3 Inline",
+            "url": "https://palwrapp.pl/#model-palwrapp-3-inline",
+            "brand": {
+              "@id": "https://palwrapp.pl/#robopac"
+            },
+            "isVariantOf": {
+              "@id": "https://palwrapp.pl/#product"
+            },
+            "additionalProperty": [
+              {
+                "@type": "PropertyValue",
+                "name": "Wydajność",
+                "value": "do 50 cykli/min"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Wydajność warstw",
+                "value": "do 3 warstw/min"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Maks. wysokość palety",
+                "value": "do 2200 mm (3 warianty wysokości)"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Format palety",
+                "value": "800 × 1200 mm / 1000 × 1200 mm"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Podajnik",
+                "value": "Inline — produkty podawane w linii prostej"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Podawanie produktu",
+                "value": "Automatyczne, ciągłe z linii produkcyjnej"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Min. wymiary produktu",
+                "value": "150 × 100 mm"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Maks. wymiary produktu",
+                "value": "600 × 400 mm"
+              }
+            ]
+          },
+          {
+            "@type": "ProductModel",
+            "@id": "https://palwrapp.pl/#model-palwrapp-2-inline",
+            "name": "Palwrapp 2 Inline",
+            "url": "https://palwrapp.pl/#model-palwrapp-2-inline",
+            "brand": {
+              "@id": "https://palwrapp.pl/#robopac"
+            },
+            "isVariantOf": {
+              "@id": "https://palwrapp.pl/#product"
+            },
+            "additionalProperty": [
+              {
+                "@type": "PropertyValue",
+                "name": "Wydajność",
+                "value": "do 40 cykli/min"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Wydajność warstw",
+                "value": "do 2,5 warstwy/min"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Maks. wysokość palety",
+                "value": "do 1800 mm (3 warianty wysokości)"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Format palety",
+                "value": "800 × 1200 mm / 1000 × 1200 mm"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Podajnik",
+                "value": "Inline — kompaktowa konfiguracja dwurzędowa"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Podawanie produktu",
+                "value": "Automatyczne, z taśmociągu lub stołu zgrzewającego"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Min. wymiary produktu",
+                "value": "120 × 80 mm"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Maks. wymiary produktu",
+                "value": "500 × 350 mm"
+              }
+            ]
+          },
+          {
+            "@type": "ProductModel",
+            "@id": "https://palwrapp.pl/#model-palwrapp-2-sweep",
+            "name": "Palwrapp 2 Sweep",
+            "url": "https://palwrapp.pl/#model-palwrapp-2-sweep",
+            "brand": {
+              "@id": "https://palwrapp.pl/#robopac"
+            },
+            "isVariantOf": {
+              "@id": "https://palwrapp.pl/#product"
+            },
+            "additionalProperty": [
+              {
+                "@type": "PropertyValue",
+                "name": "Wydajność",
+                "value": "do 35 cykli/min"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Wydajność warstw",
+                "value": "do 2 warstw/min"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Maks. wysokość palety",
+                "value": "do 1800 mm (3 warianty wysokości)"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Format palety",
+                "value": "800 × 1200 mm / 1000 × 1200 mm"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Podajnik",
+                "value": "Sweep — produkty zbierane i przesuwane na paletę"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Podawanie produktu",
+                "value": "Automatyczne, metodą sweep (zamiatanie warstwy)"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Min. wymiary produktu",
+                "value": "100 × 80 mm"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Maks. wymiary produktu",
+                "value": "450 × 300 mm"
+              }
+            ]
+          },
+          {
+            "@type": "ProductModel",
+            "@id": "https://palwrapp.pl/#model-palwrapp-sweep-infeed",
+            "name": "Palwrapp Sweep Infeed",
+            "url": "https://palwrapp.pl/#model-palwrapp-sweep-infeed",
+            "brand": {
+              "@id": "https://palwrapp.pl/#robopac"
+            },
+            "isVariantOf": {
+              "@id": "https://palwrapp.pl/#product"
+            },
+            "additionalProperty": [
+              {
+                "@type": "PropertyValue",
+                "name": "Wydajność",
+                "value": "do 25 cykli/min"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Wydajność warstw",
+                "value": "do 1,5 warstwy/min"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Maks. wysokość palety",
+                "value": "do 1800 mm (3 warianty wysokości)"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Format palety",
+                "value": "800 × 1200 mm / 1000 × 1200 mm"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Podajnik",
+                "value": "Sweep Infeed — ręczne podawanie, automatyczne układanie"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Podawanie produktu",
+                "value": "Półautomatyczne — operator układa produkty w strefie infeed"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Min. wymiary produktu",
+                "value": "100 × 80 mm"
+              },
+              {
+                "@type": "PropertyValue",
+                "name": "Maks. wymiary produktu",
+                "value": "450 × 300 mm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://palwrapp.pl/#service",
+        "name": "Dobór i wdrożenie paletyzatora Palwrapp",
+        "serviceType": "Dobór konfiguracji, dostawa, instalacja, uruchomienie i serwis paletyzatorów Robopac",
+        "provider": {
+          "@id": "https://palwrapp.pl/#organization"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Polska"
+        },
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "serviceUrl": "https://palwrapp.pl/#kontakt",
+          "servicePhone": "+48223517191"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://palwrapp.pl/#faq",
+        "inLanguage": "pl-PL",
+        "isPartOf": {
+          "@id": "https://palwrapp.pl/#webpage"
+        },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Czym Palwrapp różni się od dużych paletyzatorów?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Palwrapp to kompaktowy, modułowy paletyzator — zajmuje wyraźnie mniej miejsca niż stacjonarne maszyny portalowe. Można go ustawić jako przedłużenie istniejącej linii, bez budowy osobnej strefy paletyzacji."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jakie produkty i formaty palet obsługuje?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Najlepiej sprawdza się przy opakowaniach o płaskim spodzie — kartonach, tacach i pojemnikach. Format palety to zwykle 800 × 1200 mm lub 1000 × 1200 mm, a wymiary produktu zależą od wybranego modelu (od ok. 100 × 80 mm do 600 × 400 mm)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jaka jest wydajność maszyny?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "W zależności od modelu i konfiguracji — do ok. 50 cykli na minutę i do ok. 3 warstw na minutę. Wersja półautomatyczna pracuje wolniej (do ok. 25 cykli/min), bo operator podaje produkty w strefie infeed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Czy jest wersja automatyczna i półautomatyczna?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tak. Wersja automatyczna (m.in. Palwrapp 3 Inline, 2 Inline, 2 Sweep) pobiera produkty z linii. Wersja półautomatyczna (Sweep Infeed) wymaga ręcznego układania produktów w strefie infeed, a układanie warstw wykonuje maszyna."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jakie opcje dodatkowe warto rozważyć?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Najczęściej: destacker pustych palet, przekładki międzywarstwowe, zintegrowaną owijarkę stretch, zdalne wsparcie R-Connect, warianty wysokości palety oraz wzmocnienie do warstw o wadze do 350 kg."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak zamówić dobór konfiguracji?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Wystarczy napisać, co pakujesz, jaki format opakowań stosujesz i jaką wydajność planujesz — wrócimy z propozycją modelu Palwrapp i układu linii. Kontakt: Spolex Sp. z o.o., tel. 22 351 71 91, biuro@spolex.com."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://palwrapp.pl/#video-demo",
+        "name": "Palwrapp w pracy — prezentacja kompaktowego paletyzatora Robopac",
+        "description": "Prezentacja maszyny Robopac Palwrapp w konfiguracji produkcyjnej: automatyczne układanie produktów o płaskim spodzie na palecie.",
+        "thumbnailUrl": [
+          "https://palwrapp.pl/og-palwrapp.jpg"
+        ],
+        "uploadDate": "2026-07-21",
+        "duration": "PT3M38S",
+        "contentUrl": "https://palwrapp.pl/assets/filmy/palwrapp-demo.mp4",
+        "inLanguage": "pl-PL",
+        "isFamilyFriendly": true,
+        "publisher": {
+          "@id": "https://palwrapp.pl/#organization"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script defer src="js/motion.js"></script>
+  <script defer src="script.js"></script>
 </body>
 </html>

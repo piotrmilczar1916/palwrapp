@@ -46,6 +46,11 @@ body {
 
 img { max-width: 100%; height: auto; display: block; }
 
+/* <picture> użyte wyłącznie jako kontener formatów AVIF/WebP —
+   display:contents sprawia, że nie tworzy własnego boksu,
+   więc wszystkie dotychczasowe reguły "… img" działają bez zmian. */
+picture { display: contents; }
+
 a { color: inherit; text-decoration: none; }
 
 button, input, textarea { font: inherit; }
@@ -586,6 +591,10 @@ button, input, textarea { font: inherit; }
   line-height: 0.98;
   letter-spacing: -0.04em;
 }
+
+/* Nadtytuł "ROBOPAC PALWRAPP" jest teraz częścią <h1> (SEO: marka w nagłówku).
+   Poniższe dwie deklaracje odtwarzają dokładnie jego dotychczasowy wygląd. */
+.hero__title .hero__label { display: block; line-height: 1.6; }
 
 .hero__title-accent { color: var(--red); }
 
@@ -1813,4 +1822,22 @@ button, input, textarea { font: inherit; }
   [data-reveal] { opacity: 1; transform: none; transition: none; }
   .hero__stage { transform: none !important; }
   .specs-panel__list li { opacity: 1 !important; }
+}
+
+/* Pole-pułapka na boty — poza ekranem, nieklikalne, niewidoczne dla użytkownika.
+   Celowo NIE display:none — część botów pomija pola ukryte w ten sposób. */
+.lead-form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Separator w nadtytule hero — lekko wygaszony, żeby nie konkurował z treścią */
+.hero__label-sep {
+  opacity: 0.45;
+  margin-inline: 0.15em;
 }

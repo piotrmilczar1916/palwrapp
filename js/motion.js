@@ -372,8 +372,9 @@
 
     var heroCopy = document.querySelector('.hero__copy');
     if (heroCopy) {
+      /* .hero__label jest teraz zagnieżdżony w <h1>, więc animujemy go
+         razem z tytułem (osobny tween dawałby podwójne zanikanie). */
       var heroBits = [
-        heroCopy.querySelector('.hero__label'),
         heroCopy.querySelector('.hero__title'),
         heroCopy.querySelector('.hero__lead')
       ].filter(Boolean);

@@ -1,0 +1,10 @@
+# robots.txt — palwrapp
+# Przy zmianie domeny podmień ciąg: https://palwrapp.pl
+
+User-agent: *
+Allow: /
+
+# Endpoint formularza — poza indeksem
+Disallow: /mail.php
+
+Sitemap: https://palwrapp.pl/sitemap.xml

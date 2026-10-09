@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Przy zmianie domeny podmień ciąg: https://palwrapp.pl -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://palwrapp.pl/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://palwrapp.pl/hero-palwrapp.png</image:loc>
+      <image:title>Robopac Palwrapp — kompaktowy modułowy paletyzator</image:title>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://palwrapp.pl/og-palwrapp.jpg</video:thumbnail_loc>
+      <video:title>Palwrapp w pracy — prezentacja kompaktowego paletyzatora Robopac</video:title>
+      <video:description>Prezentacja maszyny Robopac Palwrapp w konfiguracji produkcyjnej: automatyczne układanie produktów o płaskim spodzie na palecie.</video:description>
+      <video:content_loc>https://palwrapp.pl/assets/filmy/palwrapp-demo.mp4</video:content_loc>
+      <video:duration>219</video:duration>
+      <video:publication_date>2026-07-21T00:00:00+02:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+</urlset>

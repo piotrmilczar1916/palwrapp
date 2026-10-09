@@ -1,0 +1,3 @@
+# Netlify — stary adres przekierowany na domenę docelową (przenosi autorytet SEO).
+# Zostaw ten plik w deployu Netlify; na hostingu PHP jest nieaktywny.
+https://palwrapppl.netlify.app/*  https://palwrapp.pl/:splat  301!

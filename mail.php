@@ -13,8 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 /* --- Konfiguracja --- */
+// DOKĄD trafia zapytanie — skrzynka Spolexu.
 $recipient = 'biuro@spolex.com';
-$fromEmail = 'biuro@spolex.com';
+
+// OD KOGO wychodzi list. Musi być adresem w domenie serwera wysyłającego (palwrapp.pl),
+// inaczej serwer odbiorcy odrzuci wiadomość lub wrzuci ją do spamu (SPF/DMARC).
+// Odpowiedź klientowi i tak działa — niżej ustawiamy Reply-To na jego adres.
+$fromEmail = 'formularz@palwrapp.pl';
 $fromName = 'Palwrapp.pl — formularz';
 $subjectPrefix = 'Palwrapp.pl — zapytanie';
 
@@ -41,6 +46,12 @@ function field(string $key): string
 function cleanLine(string $value): string
 {
     return str_replace(["\r", "\n"], ' ', $value);
+}
+
+/* Pole-pułapka: wypełnia je wyłącznie bot. Odpowiadamy "sukcesem",
+   żeby spamer nie dowiedział się, że wiadomość nie poszła. */
+if (field('kontakt_dodatkowy') !== '') {
+    respond(200, true, 'Dziękujemy — wiadomość została wysłana. Odezwiemy się wkrótce.');
 }
 
 $imie = field('imie');
@@ -111,7 +122,10 @@ $headers = [
     'X-Mailer: PHP/' . phpversion(),
 ];
 
-$sent = mail($recipient, $encodedSubject, $body, implode("\r\n", $headers));
+// Piąty argument ustawia nadawcę koperty (Return-Path) — to jego weryfikuje SPF.
+// Gdyby hosting go blokował (mail() zwraca false mimo poprawnej konfiguracji),
+// wystarczy usunąć ostatni argument.
+$sent = mail($recipient, $encodedSubject, $body, implode("\r\n", $headers), '-f' . $fromEmail);
 
 if (!$sent) {
     respond(500, false, 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz na biuro@spolex.com.');

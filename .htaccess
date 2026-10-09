@@ -1,0 +1,56 @@
+# ==========================================================================
+#  palwrapp.pl — konfiguracja Apache / LiteSpeed (hosting z PHP)
+#  Zastępuje netlify'owy plik _headers, który poza Netlify nic nie robi.
+# ==========================================================================
+
+# --- Kanoniczny adres: https + bez www -----------------------------------
+# Musi być zgodny z <link rel="canonical"> i z sitemap.xml (https://palwrapp.pl/)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # http → https
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://palwrapp.pl%{REQUEST_URI} [L,R=301]
+
+  # www → bez www
+  RewriteCond %{HTTP_HOST} ^www\.palwrapp\.pl$ [NC]
+  RewriteRule ^ https://palwrapp.pl%{REQUEST_URI} [L,R=301]
+
+  # /index.html → / (jeden adres kanoniczny, bez duplikatu)
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^ / [L,R=301]
+</IfModule>
+
+# --- Nagłówki bezpieczeństwa ---------------------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Endpoint formularza poza indeksem Google
+  <FilesMatch "^mail\.php$">
+    Header always set X-Robots-Tag "noindex, nofollow"
+  </FilesMatch>
+</IfModule>
+
+# --- Cache przeglądarki ---------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/avif       "access plus 30 days"
+  ExpiresByType image/webp       "access plus 30 days"
+  ExpiresByType image/png        "access plus 30 days"
+  ExpiresByType image/jpeg       "access plus 30 days"
+  ExpiresByType image/svg+xml    "access plus 30 days"
+  ExpiresByType video/mp4        "access plus 30 days"
+  ExpiresByType text/css         "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+
+# --- Kompresja ------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml \
+    application/javascript application/json image/svg+xml
+</IfModule>
+
+# --- Strona błędu ---------------------------------------------------------
+ErrorDocument 404 /index.html
