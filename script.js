@@ -117,15 +117,23 @@
   var header = document.getElementById('site-header');
   var navToggle = document.getElementById('nav-toggle');
   var siteNav = document.getElementById('site-nav');
+  var navBackdrop = document.getElementById('nav-backdrop');
 
-  function closeMobileNav() {
+  function setMobileNavOpen(open) {
     if (!header || !navToggle) return;
     var wasOpen = header.classList.contains('is-nav-open');
-    header.classList.remove('is-nav-open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    if (wasOpen && window.motionUi && window.motionUi.unlockScroll) {
-      window.motionUi.unlockScroll();
+    header.classList.toggle('is-nav-open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    if (navBackdrop) navBackdrop.hidden = !open;
+    if (!open) setModelsDropdownOpen(false);
+    if (window.motionUi) {
+      if (open && window.motionUi.lockScroll) window.motionUi.lockScroll();
+      else if (!open && wasOpen && window.motionUi.unlockScroll) window.motionUi.unlockScroll();
     }
+  }
+
+  function closeMobileNav() {
+    setMobileNavOpen(false);
   }
 
   function setModelsDropdownOpen(open) {
@@ -138,14 +146,12 @@
 
   if (header && navToggle && siteNav) {
     navToggle.addEventListener('click', function () {
-      var open = header.classList.toggle('is-nav-open');
-      navToggle.setAttribute('aria-expanded', String(open));
-      if (!open) setModelsDropdownOpen(false);
-      if (window.motionUi) {
-        if (open && window.motionUi.lockScroll) window.motionUi.lockScroll();
-        else if (!open && window.motionUi.unlockScroll) window.motionUi.unlockScroll();
-      }
+      setMobileNavOpen(!header.classList.contains('is-nav-open'));
     });
+
+    if (navBackdrop) {
+      navBackdrop.addEventListener('click', closeMobileNav);
+    }
 
     siteNav.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
@@ -234,8 +240,7 @@
     }
 
     if (header && navToggle) {
-      header.classList.remove('is-nav-open');
-      navToggle.setAttribute('aria-expanded', 'false');
+      setMobileNavOpen(false);
     }
     setModelsDropdownOpen(false);
   }
