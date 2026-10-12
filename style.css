@@ -870,26 +870,22 @@ button, input, textarea { font: inherit; }
   overflow: hidden;
 }
 .compare__media img { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; }
+.compare__card--legacy .compare__media,
 .compare__card--palwrapp .compare__media {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, var(--bg-light) 0%, #eef2f7 100%);
-  padding: 0.75rem 1rem 2.75rem;
+  background: var(--white);
+  padding: 0.65rem 0.75rem 2.75rem;
   box-sizing: border-box;
 }
+.compare__card--legacy .compare__media img,
 .compare__card--palwrapp .compare__media img {
   display: block;
-  width: auto;
-  max-width: min(100%, 420px);
-  height: auto;
-  max-height: 100%;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center center;
-}
-.compare__media--placeholder {
-  background: linear-gradient(135deg, #e8edf3, #cfd8e3);
 }
 .compare__media-tag {
   position: absolute;
