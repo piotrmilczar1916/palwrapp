@@ -213,13 +213,16 @@
         <div class="compare">
           <article class="compare__card compare__card--legacy">
             <div class="compare__media">
-              <img
-                src="assets/traditional-palletizer-plan.jpg"
-                alt="Rzut z góry — układ tradycyjnego paletyzatora w hali produkcyjnej"
-                width="1024"
-                height="617"
-                loading="lazy"
-                decoding="async">
+              <button type="button" class="compare__zoom" data-lightbox-trigger aria-label="Powiększ rysunek techniczny — tradycyjny paletyzator">
+                <img
+                  src="assets/traditional-palletizer-plan.jpg"
+                  alt="Rzut z góry — układ tradycyjnego paletyzatora w hali produkcyjnej"
+                  width="1024"
+                  height="617"
+                  loading="lazy"
+                  decoding="async">
+                <span class="compare__zoom-hint" aria-hidden="true">Powiększ</span>
+              </button>
               <span class="compare__media-tag">Tradycyjny paletyzator</span>
             </div>
             <ul class="compare__list compare__list--negative">
@@ -233,17 +236,20 @@
 
           <article class="compare__card compare__card--palwrapp">
             <div class="compare__media">
-              <img
-                src="assets/palwrapp-plan.jpg"
-                alt="Rzut z góry — kompaktowy układ paletyzatora Palwrapp w linii produkcyjnej"
-                width="1024"
-                height="980"
-                loading="lazy"
-                decoding="async">
+              <button type="button" class="compare__zoom" data-lightbox-trigger aria-label="Powiększ rysunek techniczny — Palwrapp">
+                <img
+                  src="assets/palwrapp-plan.jpg"
+                  alt="Rzut z góry — kompaktowy układ paletyzatora Palwrapp w linii produkcyjnej"
+                  width="1024"
+                  height="980"
+                  loading="lazy"
+                  decoding="async">
+                <span class="compare__zoom-hint" aria-hidden="true">Powiększ</span>
+              </button>
               <span class="compare__media-tag">Palwrapp</span>
             </div>
             <ul class="compare__list compare__list--positive">
-              <li>Kompaktowa konstrukcja — mniejszy ślad instalacyjny</li>
+              <li>Kompaktowa konstrukcja — mniejsza powierzchnia pod instalację</li>
               <li>Modułowość i wspólne systemy ramowe</li>
               <li>Gotowość do integracji z istniejącą linią</li>
             </ul>
@@ -256,12 +262,12 @@
             i systemach ramowych</strong>, co ułatwia konfigurację, serwisowanie i późniejsze
             rozbudowy. Maszyna jest szczególnie dobrze dopasowana do produktów
             o <strong>płaskim spodzie</strong> — kartonów, tac, pojemników i opakowań
-            typowych dla przemysłu spożywczego.
+            typowych dla przemysłu spożywczego i chemicznego.
           </p>
           <p>
             W odróżnieniu od dużych, stacjonarnych paletyzatorów portalowych, Palwrapp
-            łączy niewielki ślad instalacyjny z pełną automatyzacją procesu układania
-            warstw, w tym opcjonalnym owijaniem stretch i wstawianiem przekładek.
+            łączy niewielką powierzchnię pod instalację z pełną automatyzacją procesu układania
+            warstw, w tym opcjonalnym owijaniem palety folią stretch i wstawianiem przekładek.
           </p>
         </div>
       </div>
@@ -631,23 +637,23 @@
         <ul class="equip-grid">
           <li class="equip-card">
             <span class="equip-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg></span>
-            <h3>PLC / touchscreen</h3>
-            <p><strong>Elektronika najwyższej klasy</strong> — sterownik PLC z ekranem dotykowym zapewnia stabilną pracę i łatwy dostęp do parametrów. Mniej nieplanowanych postojów i możliwość samodzielnej diagnostyki alarmów.</p>
+            <h3>Układ sterowania</h3>
+            <p>Układ sterowania wraz z ekranem dotykowym zapewnia stabilną pracę i łatwy dostęp do parametrów. Mniej nieplanowanych postojów i możliwość samodzielnej diagnostyki alarmów.</p>
           </li>
           <li class="equip-card">
             <span class="equip-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4"/></svg></span>
             <h3>Servo drives</h3>
-            <p><strong>Napędy serwo</strong> kontrolują ruch osi układających z wysoką precyzją. Każda warstwa jest identyczna — kluczowe przy produktach wymagających stabilnego stosu.</p>
+            <p>Główne elementy ruchome są napędzane serwomotorami, co zapewnia niskie zużycie energii i maksymalną niezawodność.</p>
           </li>
           <li class="equip-card">
             <span class="equip-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
             <h3>Safety</h3>
-            <p><strong>Bezpieczeństwo kat. 3 PL(d)</strong> — osłony i systemy bezpieczeństwa wg EN ISO 13849-1. Operator pracuje w bliskości maszyny bez narażenia na kontakt z elementami ruchomymi.</p>
+            <p>Wysokie standardy bezpieczeństwa gwarantujące maksymalną ochronę (kategoria 3 PL(d)).</p>
           </li>
           <li class="equip-card">
             <span class="equip-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
-            <h3>Operator interface</h3>
-            <p><strong>Prosty interfejs operatorski</strong> — intuicyjny panel dotykowy: zmiana formatu, podgląd licznika warstw i historia alarmów bez szkolenia z automatyki przemysłowej.</p>
+            <h3>Touchscreen interface</h3>
+            <p>Prosty interfejs operatorski — intuicyjny panel dotykowy umożliwiający zmianę formatu, podgląd licznika warstw i historię alarmów.</p>
           </li>
         </ul>
       </div>
@@ -656,37 +662,47 @@
     <section class="section section--light" id="opcje" aria-labelledby="opcje-heading">
       <div class="container">
         <div class="section-header">
-          <h2 id="opcje-heading">Opcje dodatkowe</h2>
-          <p class="section-lead">Moduły rozszerzające możliwości standardowej konfiguracji — warto rozważyć je już na etapie planowania linii.</p>
+          <h2 id="opcje-heading">Opcje urządzenia</h2>
+          <p class="section-lead">Opcjonalne elementy rozszerzające konfigurację Palwrapp — warto uwzględnić je już na etapie planowania linii.</p>
         </div>
         <div class="module-grid">
-          <article class="module-card">
-            <span class="module-card__tag">Moduł</span>
-            <h3>Destacker unit</h3>
-            <p>Automatyczne pobieranie pustych palet ze stosu — eliminuje ręczne odkładanie przez operatora.</p>
+          <article class="module-card module-card--media-only">
+            <div class="module-card__media">
+              <img src="assets/options/magazyn-palet.jpg" alt="Magazyn palet — automatyczne podawanie pustych palet" width="350" height="233" loading="lazy" decoding="async">
+            </div>
+            <h3>Magazyn palet</h3>
           </article>
           <article class="module-card">
-            <span class="module-card__tag">Moduł</span>
-            <h3>Przekładki międzywarstwowe</h3>
-            <p>Wstawianie kartonowych lub plastikowych przekładek między warstwami — stabilizacja stosu i ochrona opakowań.</p>
+            <div class="module-card__media">
+              <img src="assets/options/magazyn-przekladek.jpg" alt="Magazyn przekładek międzywarstwowych" width="350" height="233" loading="lazy" decoding="async">
+            </div>
+            <h3>Magazyn przekładek</h3>
+            <p>Magazyn kartonowych przekładek międzywarstwowych do stabilizacji palety.</p>
           </article>
-          <article class="module-card">
-            <span class="module-card__tag">Moduł</span>
+          <article class="module-card module-card--media-only">
+            <div class="module-card__media">
+              <img src="assets/options/owijarka-stretch.jpg" alt="Zintegrowana owijarka stretch" width="350" height="233" loading="lazy" decoding="async">
+            </div>
             <h3>Zintegrowana owijarka stretch</h3>
-            <p>Owijanie folią bezpośrednio po układaniu — bez transportu do osobnego stanowiska.</p>
           </article>
           <article class="module-card">
-            <span class="module-card__tag">Moduł</span>
+            <div class="module-card__media">
+              <img src="assets/options/r-connect.png" alt="Zdalne wsparcie R-Connect" width="350" height="215" loading="lazy" decoding="async">
+            </div>
             <h3>Zdalne wsparcie R-Connect</h3>
             <p>Zdalny podgląd parametrów, diagnostyka i aktualizacja oprogramowania — krótszy czas reakcji serwisu.</p>
           </article>
           <article class="module-card">
-            <span class="module-card__tag">Moduł</span>
-            <h3>3 warianty wysokości palety</h3>
-            <p>Konfiguracja wysokości roboczej dostosowana do przestrzeni hali — bez zmiany logiki układania.</p>
+            <div class="module-card__media">
+              <img src="assets/options/wysokosc-transportera.jpg" alt="Warianty wysokości transportera palet" width="350" height="233" loading="lazy" decoding="async">
+            </div>
+            <h3>Dostępne 3 warianty wysokości transportera palet</h3>
+            <p>Palety mogą wyjeżdżać na 3 wysokościach, w przedziale od 380 do 550 mm.</p>
           </article>
           <article class="module-card">
-            <span class="module-card__tag">Moduł</span>
+            <div class="module-card__media">
+              <img src="assets/options/waga-warstwy.jpg" alt="Konfiguracja do warstw o wadze do 350 kg" width="350" height="233" loading="lazy" decoding="async">
+            </div>
             <h3>Waga warstwy do 350 kg</h3>
             <p>Wzmocniona rama i napędy do ciężkich produktów — np. zgrzewki multipacków z napojami.</p>
           </article>
@@ -713,6 +729,17 @@
             <source type="image/webp" srcset="hero-palwrapp-1510.webp">
             <img src="hero-palwrapp.png" alt="" width="1510" height="1133" loading="lazy" decoding="async" aria-hidden="true">
           </picture>
+        </div>
+      </div>
+
+      <div class="image-lightbox" id="image-lightbox" hidden>
+        <div class="image-lightbox__backdrop" data-lightbox-close></div>
+        <div class="image-lightbox__dialog" role="dialog" aria-modal="true" aria-labelledby="image-lightbox-caption">
+          <button type="button" class="image-lightbox__close" data-lightbox-close aria-label="Zamknij">×</button>
+          <figure class="image-lightbox__figure">
+            <img class="image-lightbox__img" id="image-lightbox-img" alt="">
+            <figcaption class="image-lightbox__caption" id="image-lightbox-caption"></figcaption>
+          </figure>
         </div>
       </div>
 
@@ -750,7 +777,7 @@
               <span class="benefit-item__icon" aria-hidden="true"></span>
             </button>
             <div class="benefit-item__body" id="faq-2" role="region" aria-labelledby="faq-btn-2" hidden>
-              <p>Najlepiej sprawdza się przy opakowaniach o płaskim spodzie — kartonach, tacach i pojemnikach. Format palety to zwykle 800 × 1200 mm lub 1000 × 1200 mm, a wymiary produktu zależą od wybranego modelu (od ok. 100 × 80 mm do 600 × 400 mm).</p>
+              <p>Najlepiej sprawdza się przy opakowaniach o płaskim spodzie — kartonach, tacach i pojemnikach. Format palety to zwykle 800 × 1200 mm lub 1000 × 1200 mm, a wymiary produktu zależą od wybranego modelu (od ok. 150 × 150 × 100 mm do 600 × 400 × 400 mm).</p>
             </div>
           </article>
           <article class="faq-item benefit-item">
@@ -773,19 +800,10 @@
           </article>
           <article class="faq-item benefit-item">
             <button type="button" class="benefit-item__header faq-item__header" aria-expanded="false" aria-controls="faq-5" id="faq-btn-5">
-              <span class="benefit-item__title">Jakie opcje dodatkowe warto rozważyć?</span>
+              <span class="benefit-item__title">Jak wybrać odpowiednią konfigurację?</span>
               <span class="benefit-item__icon" aria-hidden="true"></span>
             </button>
             <div class="benefit-item__body" id="faq-5" role="region" aria-labelledby="faq-btn-5" hidden>
-              <p>Najczęściej: destacker pustych palet, przekładki międzywarstwowe, zintegrowaną owijarkę stretch, zdalne wsparcie R-Connect, warianty wysokości palety oraz wzmocnienie do warstw o wadze do 350 kg.</p>
-            </div>
-          </article>
-          <article class="faq-item benefit-item">
-            <button type="button" class="benefit-item__header faq-item__header" aria-expanded="false" aria-controls="faq-6" id="faq-btn-6">
-              <span class="benefit-item__title">Jak zamówić dobór konfiguracji?</span>
-              <span class="benefit-item__icon" aria-hidden="true"></span>
-            </button>
-            <div class="benefit-item__body" id="faq-6" role="region" aria-labelledby="faq-btn-6" hidden>
               <p>Wystarczy napisać, co pakujesz, jaki format opakowań stosujesz i jaką wydajność planujesz — wrócimy z propozycją modelu Palwrapp i układu linii. Kontakt: Spolex Sp. z o.o., tel. 22 351 71 91, biuro@spolex.com.</p>
             </div>
           </article>
@@ -1306,7 +1324,7 @@
             "name": "Jakie produkty i formaty palet obsługuje?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Najlepiej sprawdza się przy opakowaniach o płaskim spodzie — kartonach, tacach i pojemnikach. Format palety to zwykle 800 × 1200 mm lub 1000 × 1200 mm, a wymiary produktu zależą od wybranego modelu (od ok. 100 × 80 mm do 600 × 400 mm)."
+              "text": "Najlepiej sprawdza się przy opakowaniach o płaskim spodzie — kartonach, tacach i pojemnikach. Format palety to zwykle 800 × 1200 mm lub 1000 × 1200 mm, a wymiary produktu zależą od wybranego modelu (od ok. 150 × 150 × 100 mm do 600 × 400 × 400 mm)."
             }
           },
           {
@@ -1327,15 +1345,7 @@
           },
           {
             "@type": "Question",
-            "name": "Jakie opcje dodatkowe warto rozważyć?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Najczęściej: destacker pustych palet, przekładki międzywarstwowe, zintegrowaną owijarkę stretch, zdalne wsparcie R-Connect, warianty wysokości palety oraz wzmocnienie do warstw o wadze do 350 kg."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Jak zamówić dobór konfiguracji?",
+            "name": "Jak wybrać odpowiednią konfigurację?",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Wystarczy napisać, co pakujesz, jaki format opakowań stosujesz i jaką wydajność planujesz — wrócimy z propozycją modelu Palwrapp i układu linii. Kontakt: Spolex Sp. z o.o., tel. 22 351 71 91, biuro@spolex.com."
