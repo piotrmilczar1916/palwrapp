@@ -1,7 +1,11 @@
-# Netlify — przekierowanie na palwrapp.pl
+# Netlify — przekierowanie 301 starego adresu na palwrapp.pl
 #
-# WŁĄCZ dopiero gdy domena palwrapp.pl jest podpięta w Netlify
-# (Domain settings → DNS / nameservery) i strona otwiera się pod tym adresem.
-# Do tego czasu zostaw zakomentowane — inaczej *.netlify.app robi 301 na nieistniejącą domenę.
+# WŁĄCZ (usuń znak # z ostatniej linii) DOPIERO wtedy, gdy adres
+# https://palwrapp.pl/ realnie otwiera stronę (odpowiada kodem 200).
+# Przekierowanie na zewnętrzną domenę działa bez podpinania jej w Netlify,
+# ale dopóki palwrapp.pl nie odpowiada, wysłałoby ruch i Googlebota donikąd.
+#
+# Po włączeniu: stary adres netlify.app oddaje moc linków nowej domenie,
+# a w indeksie Google zostaje tylko jedna wersja strony.
 #
 # https://palwrapppl.netlify.app/*  https://palwrapp.pl/:splat  301!

@@ -11,8 +11,10 @@
     ================= DOMENA KANONICZNA =================
     Wszystkie adresy bezwzględne na stronie używają ciągu:
         https://palwrapp.pl
-    Zmiana domeny (np. na https://palwrapp.pl) = podmiana tego jednego
-    ciągu w plikach: index.html, sitemap.xml, robots.txt.
+    Ewentualna zmiana domeny = podmiana tego jednego ciągu
+    w plikach: index.html, sitemap.xml, robots.txt, .htaccess, _redirects.
+    UWAGA: strona nie może być publikowana pod innym adresem niż ten
+    canonical — inaczej Google uzna ją za kopię nieistniejącej strony.
     ====================================================
   -->
   <link rel="canonical" href="https://palwrapp.pl/">
@@ -28,6 +30,8 @@
   <meta property="og:title" content="Paletyzator kompaktowy Palwrapp — Robopac | Spolex">
   <meta property="og:description" content="Kompaktowy, modułowy paletyzator Robopac Palwrapp: do 30 cykli/min, paleta do 2700 mm, integracja z istniejącą linią. Dobierz konfigurację.">
   <meta property="og:image" content="https://palwrapp.pl/og-palwrapp.jpg">
+  <meta property="og:image:secure_url" content="https://palwrapp.pl/og-palwrapp.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Robopac Palwrapp — kompaktowy modułowy paletyzator">
@@ -37,6 +41,7 @@
   <meta name="twitter:title" content="Paletyzator kompaktowy Palwrapp — Robopac | Spolex">
   <meta name="twitter:description" content="Kompaktowy, modułowy paletyzator Robopac Palwrapp: do 30 cykli/min, paleta do 2700 mm, integracja z istniejącą linią.">
   <meta name="twitter:image" content="https://palwrapp.pl/og-palwrapp.jpg">
+  <meta name="twitter:image:alt" content="Robopac Palwrapp — kompaktowy modułowy paletyzator">
 
   <!-- Favicony -->
   <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -952,6 +957,7 @@
           "isPartOf": {
             "@id": "https://palwrapp.pl/#website"
           },
+          "dateModified": "2026-10-16",
           "about": {
             "@id": "https://palwrapp.pl/#product"
           },
@@ -1286,8 +1292,8 @@
           "thumbnailUrl": [
             "https://palwrapp.pl/og-palwrapp.jpg"
           ],
-          "uploadDate": "2026-07-21",
-          "duration": "PT3M38S",
+          "uploadDate": "2026-07-21T00:00:00+02:00",
+          "duration": "PT3M39S",
           "contentUrl": "https://palwrapp.pl/assets/filmy/palwrapp-demo.mp4",
           "inLanguage": "pl-PL",
           "isFamilyFriendly": true,

@@ -1,0 +1,21 @@
+# System plików macOS
+.DS_Store
+**/.DS_Store
+
+# Kopie zapasowe i pliki robocze
+*.bak
+*.backup
+*.orig
+*.tmp
+*~
+
+# Podglądy i materiały źródłowe (nie trafiają na produkcję)
+mobile-preview-*.png
+design-reference.*
+*.psd
+*.ai
+
+# Logi i konfiguracja lokalna
+*.log
+.env
+.env.*

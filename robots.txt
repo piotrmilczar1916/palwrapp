@@ -7,4 +7,7 @@ Allow: /
 # Endpoint formularza — poza indeksem
 Disallow: /mail.php
 
+# Pliki robocze (podglądy makiet) — poza indeksem i poza Grafiką Google
+Disallow: /mobile-preview-
+
 Sitemap: https://palwrapp.pl/sitemap.xml
