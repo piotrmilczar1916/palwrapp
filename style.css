@@ -1318,7 +1318,9 @@ button, input, textarea { font: inherit; }
 /* Model showcase */
 .model-showcase {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* auto-fit: siatka dopasowuje liczbę kolumn do liczby kart,
+     więc nie zostaje pusta kolumna, gdy modeli jest mniej niż cztery */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
 }
 

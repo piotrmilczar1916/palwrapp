@@ -263,9 +263,12 @@
       };
 
       if (index === 0) {
+        // cel odczytywany z HTML, żeby zmiana parametru nie wymagała ruszania JS
+        var target0 = parseInt(valueEl.textContent.replace(/\D/g, ''), 10);
+        if (!target0) return;
         var p0 = { n: 0 };
         gsap.to(p0, {
-          n: 50,
+          n: target0,
           duration: 1.1,
           ease: 'power1.out',
           scrollTrigger: st,
@@ -273,9 +276,12 @@
         });
       } else if (index === 1) {
         var mmSpan = valueEl.querySelector('span');
+        var raw1 = mmSpan ? valueEl.childNodes[0].textContent : valueEl.textContent;
+        var target1 = parseInt(raw1.replace(/\D/g, ''), 10);
+        if (!target1) return;
         var p1 = { n: 0 };
         gsap.to(p1, {
-          n: 2200,
+          n: target1,
           duration: 1.15,
           ease: 'power1.out',
           scrollTrigger: st,
@@ -624,31 +630,24 @@
 
       var original = valueOriginals[index] || valEl.getAttribute('data-value-original') || '';
 
-      if (index === 0 && /50/.test(original)) {
-        counted[index] = true;
-        var p0 = { n: 0 };
-        gsap.to(p0, {
-          n: 50,
-          duration: 1,
-          ease: 'power1.out',
-          overwrite: true,
-          onUpdate: function () {
-            valEl.textContent = 'do ' + Math.round(p0.n) + ' cykli/min';
-          },
-        });
-      } else if (index === 1 && /2200/.test(original)) {
-        counted[index] = true;
-        var p1 = { n: 0 };
-        gsap.to(p1, {
-          n: 2200,
-          duration: 1.1,
-          ease: 'power1.out',
-          overwrite: true,
-          onUpdate: function () {
-            valEl.textContent = Math.round(p1.n) + ' mm';
-          }
-        });
-      }
+      // Liczba i jej otoczenie brane są z oryginalnego tekstu, więc animacja
+      // dopasowuje się automatycznie po zmianie parametrów w HTML.
+      if (index > 1) return;
+      var match = original.match(/\d+/);
+      if (!match) return;
+
+      counted[index] = true;
+      var target = parseInt(match[0], 10);
+      var proxy = { n: 0 };
+      gsap.to(proxy, {
+        n: target,
+        duration: index === 0 ? 1 : 1.1,
+        ease: 'power1.out',
+        overwrite: true,
+        onUpdate: function () {
+          valEl.textContent = original.replace(match[0], String(Math.round(proxy.n)));
+        }
+      });
     }
 
     function setActive(index) {
