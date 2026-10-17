@@ -1,0 +1,23 @@
+# ==========================================================================
+#  Nagłówki HTTP — czyta je WYŁĄCZNIE Netlify.
+#  CyberFolks (Apache/LiteSpeed) ignoruje ten plik; tam działa .htaccess.
+# ==========================================================================
+
+# Podgląd na netlify.app jest wersją roboczą dla zespołu Spolexu.
+# noindex trzyma go poza Google, więc nie konkuruje z palwrapp.pl
+# i nie szkodzi mu canonical wskazujący na docelową domenę.
+#
+# UWAGA: nie kopiuj tej reguły do .htaccess — na produkcji wyrzuciłaby
+# palwrapp.pl z wyników wyszukiwania.
+/*
+  X-Robots-Tag: noindex, nofollow
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+
+# Typy MIME — Netlify zwykle rozpoznaje je sam, ale lepiej mieć pewność,
+# bo bez poprawnego Content-Type przeglądarka nie wyświetli AVIF-ów.
+/*.avif
+  Content-Type: image/avif
+/*.webp
+  Content-Type: image/webp

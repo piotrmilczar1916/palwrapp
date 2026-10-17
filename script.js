@@ -1,9 +1,6 @@
 (function () {
   'use strict';
 
-  var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
   function closeBenefitItem(item) {
     var btn = item.querySelector('.benefit-item__header');
     var body = btn && document.getElementById(btn.getAttribute('aria-controls'));
@@ -241,13 +238,6 @@
   }
 
   function resetPageToDefaults() {
-    document.querySelectorAll('.video-card__player').forEach(function (video) {
-      try {
-        video.pause();
-        if (video.readyState >= 1) video.currentTime = 0;
-      } catch (err) { /* ignore */ }
-    });
-
     if (videoModalPlayer) {
       videoModalPlayer.pause();
       if (videoModalPlayer.readyState >= 1) videoModalPlayer.currentTime = 0;

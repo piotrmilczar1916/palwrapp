@@ -9,13 +9,19 @@
 
   <!--
     ================= DOMENA KANONICZNA =================
-    Wszystkie adresy bezwzględne na stronie używają ciągu:
-        https://palwrapp.pl
-    Ewentualna zmiana domeny = podmiana tego jednego ciągu
-    w plikach: index.html, sitemap.xml, robots.txt, .htaccess, _redirects.
-    UWAGA: strona nie może być publikowana pod innym adresem niż ten
-    canonical — inaczej Google uzna ją za kopię nieistniejącej strony.
-    ====================================================
+    Adresy bezwzględne wskazują na https://palwrapp.pl — to docelowy adres
+    strony (hosting CyberFolks, domena już podpięta).
+
+    Podgląd na palwrapppl.netlify.app jest wersją roboczą dla zespołu Spolexu.
+    Nie może trafić do Google, dlatego plik _headers ustawia tam
+    X-Robots-Tag: noindex. Netlify czyta _headers, CyberFolks go ignoruje,
+    więc wersja produkcyjna indeksuje się normalnie.
+
+    PO URUCHOMIENIU palwrapp.pl (gdy adres zwraca 200):
+      1. Odkomentuj ostatnią linię w _redirects (301 z netlify.app)
+      2. Zaktualizuj <lastmod> w sitemap.xml
+      3. Zgłoś sitemapę w Google Search Console
+    =====================================================
   -->
   <link rel="canonical" href="https://palwrapp.pl/">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -773,11 +779,11 @@
             </div>
           </article>
           <article class="faq-item benefit-item">
-            <button type="button" class="benefit-item__header faq-item__header" aria-expanded="false" aria-controls="faq-5" id="faq-btn-5">
+            <button type="button" class="benefit-item__header faq-item__header" aria-expanded="false" aria-controls="faq-4" id="faq-btn-4">
               <span class="benefit-item__title">Jak wybrać odpowiednią konfigurację?</span>
               <span class="benefit-item__icon" aria-hidden="true"></span>
             </button>
-            <div class="benefit-item__body" id="faq-5" role="region" aria-labelledby="faq-btn-5" hidden>
+            <div class="benefit-item__body" id="faq-4" role="region" aria-labelledby="faq-btn-4" hidden>
               <p>Wystarczy napisać, co pakujesz, jaki format opakowań stosujesz i jaką wydajność planujesz — wrócimy z propozycją modelu Palwrapp i układu linii. Kontakt: Spolex Sp. z o.o., tel. 22 351 71 91, biuro@spolex.com.</p>
             </div>
           </article>
@@ -969,10 +975,10 @@
         {
           "@type": "ImageObject",
           "@id": "https://palwrapp.pl/#heroimage",
-          "url": "https://palwrapp.pl/hero-palwrapp.png",
-          "contentUrl": "https://palwrapp.pl/hero-palwrapp.png",
-          "width": 1510,
-          "height": 1133,
+          "url": "https://palwrapp.pl/hero-palwrapp-1200.jpg",
+          "contentUrl": "https://palwrapp.pl/hero-palwrapp-1200.jpg",
+          "width": 1200,
+          "height": 900,
           "caption": "Robopac Palwrapp — kompaktowy modułowy paletyzator w konfiguracji produkcyjnej"
         },
         {
@@ -982,7 +988,7 @@
           "alternateName": "Palwrapp — kompaktowy paletyzator modułowy",
           "category": "Paletyzatory kompaktowe / automatyzacja końca linii",
           "url": "https://palwrapp.pl/",
-          "image": "https://palwrapp.pl/hero-palwrapp.png",
+          "image": "https://palwrapp.pl/hero-palwrapp-1200.jpg",
           "description": "Palwrapp to kompaktowy, modułowy paletyzator Robopac przeznaczony do produktów o płaskim spodzie (kartony, tace, pojemniki). Zajmuje wyraźnie mniej miejsca niż paletyzatory portalowe i integruje się z istniejącą linią produkcyjną. Wydajność do 30 cykli/min i do 3 warstw/min, paleta do 2700 mm, formaty 1200 × 1000 mm i 1200 × 800 mm, opcjonalnie owijanie folią stretch, przekładki międzywarstwowe i destacker palet.",
           "brand": {
             "@id": "https://palwrapp.pl/#robopac"
